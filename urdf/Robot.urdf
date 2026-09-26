@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<robot name="/media/abrar/shared/robot/materi_mage/urdf/Robot.urdf" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.25 0.15 0.035"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.25 0.15 0.035"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="solid">
+  </link>
+  <joint name="base_link_solid_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="rotational motor" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid(4)"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="-0.7 0.85 0" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="solid(4)">
+    <visual>
+      <origin xyz="0.63 0.000003 0.765" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.63 0.000003 0.765" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rotational motor" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid(3)"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="1.33 0.850003 0.765" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="solid(3)">
+    <visual>
+      <origin xyz="-0.63 0.000003 0.765" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.63 0.000003 0.765" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rotational motor" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid(2)"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0.07 -0.849997 0.765" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="solid(2)">
+    <visual>
+      <origin xyz="-0.63 -0.000003 -0.765" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.63 -0.000003 -0.765" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rotational motor" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid(1)"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="-0.7 -0.085003 -0.765" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="solid(1)">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rotational motor" type="continuous">
+    <parent link="base_link"/>
+    <child link="distance sensor(1)"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0.12 0 0.03" rpy="0 0 0"/>
+  </joint>
+  <link name="distance sensor(1)">
+  </link>
+  <link name="solid_0">
+    <visual>
+      <geometry>
+        <box size="0.01 0.03 0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.01 0.03 0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="distance sensor(1)_solid_0_joint" type="fixed">
+    <parent link="distance sensor(1)"/>
+    <child link="solid_0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+</robot>

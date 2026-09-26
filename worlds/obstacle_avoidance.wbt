@@ -1,0 +1,367 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/samples/robotbenchmark/maze_runner/protos/MazeBlock.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.34180773627196587 0.3203520675483287 -0.8834828941423515 1.7583890147575327
+  position -0.051792635431088085 1.2579482791393883 1.0740744429342581
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 5 5
+}
+DEF Floor Solid {
+  translation 0 0 0.01
+  children [
+    DEF FLOOR Shape {
+      appearance PBRAppearance {
+        baseColor 0.709804 0.513726 0.352941
+        roughness 1
+        metalness 0
+      }
+      geometry Plane {
+        size 5 5
+      }
+    }
+  ]
+  boundingObject USE FLOOR
+}
+DEF CAR Robot {
+  translation -0.2499998971926725 0.3492003612708028 0.039692958933247924
+  rotation -1.1083387495063494e-06 -1.109566044596782e-06 -0.9999999999987702 1.570795308073079
+  children [
+    DEF RIGHT_FRONT_WHEEL HingeJoint {
+      jointParameters HingeJointParameters {
+        position -23.325911188825085
+        axis 0 1 0
+        anchor 0.07 -0.085 0
+      }
+      device [
+        DEF RIGHT_FRONT_MOTOR RotationalMotor {
+          name "RIGHT_FRONT_MOTOR"
+        }
+      ]
+      endPoint Solid {
+        translation 0.07 -0.085 0
+        rotation 0.48674132529917613 0.6176892743467641 -0.6176915432503262 2.235626504725853
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.03
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE wheel
+        physics Physics {
+        }
+        linearVelocity 1.5260298367783187e-07 -0.15000052063005628 -9.034250841529317e-07
+        angularVelocity 5.000017369914586 5.09633607029829e-06 -1.1102069054055183e-09
+      }
+    }
+    DEF LEFT_FRONT_WHEEL HingeJoint {
+      jointParameters HingeJointParameters {
+        position 30.03162975072862
+        axis 0 1 0
+        anchor 0.07 0.085 0
+      }
+      device [
+        DEF LEFT_FRONT_MOTOR RotationalMotor {
+          name "LEFT_FRONT_MOTOR"
+        }
+      ]
+      endPoint Solid {
+        translation 0.07 0.085 0
+        rotation -0.6489778301466036 0.5379710260901908 -0.5379730021717385 4.292901923058076
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.03
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE wheel
+        physics Physics {
+        }
+        linearVelocity 1.5258419268014262e-07 -0.15000052125936603 -9.035945187247947e-07
+        angularVelocity 5.000017369952279 5.093820928084733e-06 8.050516688329266e-10
+      }
+    }
+    DEF LEFT_BACK_WHEEL HingeJoint {
+      jointParameters HingeJointParameters {
+        position 30.031629976546512
+        axis 0 1 0
+        anchor -0.07 0.085 0
+      }
+      device [
+        DEF LEFT_BACK_MOTOR RotationalMotor {
+          name "LEFT_BACK_MOTOR"
+        }
+      ]
+      endPoint Solid {
+        translation -0.07 0.085 0
+        rotation -0.6489779164695543 0.5379709740228128 -0.5379729501041686 4.2929020445392245
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.03
+            }
+          }
+        ]
+        name "solid(4)"
+        boundingObject USE wheel
+        physics Physics {
+        }
+        linearVelocity 1.5310205978778756e-07 -0.15000052158336089 1.480500042864379e-06
+        angularVelocity 5.000017369971684 5.09383219453494e-06 7.971917244532062e-10
+      }
+    }
+    DEF USC_SENSOR HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0.12 0 0.03
+      }
+      device [
+        DEF USC_SERVO RotationalMotor {
+          name "USC_SERVO"
+        }
+      ]
+      endPoint DEF USC_SENSOR DistanceSensor {
+        translation 0.12 0 0.03
+        children [
+          Solid {
+            children [
+              DEF USC Shape {
+                appearance PBRAppearance {
+                  baseColor 0.368627 0.360784 0.392157
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.01 0.03 0.02
+                }
+              }
+            ]
+            boundingObject USE USC
+          }
+        ]
+        name "USC_SENSOR"
+        lookupTable [
+          0 0 0
+          1 100 0
+        ]
+      }
+    }
+    DEF RIGHT_BACK_WHEEL HingeJoint {
+      jointParameters HingeJointParameters {
+        position -23.32591096286189
+        axis 0 1 0
+        anchor -0.07 -0.085 0
+      }
+      device [
+        DEF RIGHT_BACK_MOTOR RotationalMotor {
+          name "RIGHT_BACK_MOTOR"
+        }
+      ]
+      endPoint DEF Wheel Solid {
+        translation -0.07 -0.085 0
+        rotation 0.48674123875085223 0.6176893088270435 -0.6176915769702992 2.2356266436986405
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.03
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics Physics {
+        }
+        linearVelocity 1.5312084731118695e-07 -0.1500005209540508 1.4806694765566653e-06
+        angularVelocity 5.000017369933992 5.096346880692529e-06 -1.117749007150276e-09
+      }
+    }
+    DEF BODY Solid {
+      children [
+        DEF Body Shape {
+          appearance PBRAppearance {
+            baseColor 0.384314 0.627451 0.917647
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.25 0.15 0.035
+          }
+        }
+      ]
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "Robot_Controller"
+  linearVelocity 1.528525651303681e-07 -0.15000056541781048 -8.35359354650375e-09
+  angularVelocity 1.7369945190578873e-05 1.034314518716569e-09 -6.263484628665383e-09
+}
+DEF Maze Solid {
+  translation 0 0 0.03
+  children [
+    MazeBlock {
+      hidden linearVelocity_0 -9.985508173755379e-05 0.00019662020411052606 -3.0867064588022333e-07
+      hidden angularVelocity_0 -1.954719158471582e-07 -2.287557981220173e-09 -2.360509829545244e-05
+      translation -0.0004284572685502814 -5.945721586302982e-06 -2.3749320364960247e-06
+      rotation 0.0007850582932059313 9.084242959877402e-06 0.9999996918004288 0.0003040823684211801
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 0 0 -1.5878811405852621e-07
+      translation -0.58 0 -2.73432346974134e-06
+      name "maze block(1)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 7.573066169790309e-05 -3.337754270998721e-05 -1.6874100272433832e-07
+      hidden angularVelocity_0 6.747664554411609e-11 -4.378422542918129e-09 1.5069596194527736e-05
+      translation -0.2500358044527592 -0.9305820884488547 -2.7356788143140243e-06
+      rotation 2.97258717383159e-10 -2.8622336346932985e-10 -0.9999999999999999 1.5705423418904167
+      name "maze block(2)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 -1.3877787807814457e-15 5.296911982883057e-10 -1.5884291370546139e-07
+      hidden angularVelocity_0 4.1098178628057296e-13 -2.466037855049684e-11 -2.383664918311913e-10
+      translation 0.6499999999998977 -0.930000000067801 -2.7343164555188038e-06
+      rotation -1.6045652528708862e-12 1.5519611669667663e-12 -1 1.5707953071490752
+      name "maze block(4)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 7.430949820360169e-05 -8.990944052051776e-06 -3.04571544352244e-07
+      hidden angularVelocity_0 -6.101620383400022e-13 -6.408255419790265e-08 4.0272297590199944e-06
+      translation 0.4398722769371667 -0.45028443925577244 -2.6439384211152106e-06
+      rotation -1.98774946767296e-08 1.9931354192816977e-08 -0.9999999999999997 1.5706700853804785
+      name "maze block(3)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 0 0 -1.5878811405852621e-07
+      translation 1.35 -0.45 -2.7343234697482788e-06
+      rotation 0 0 -0.9999999999999999 1.5707953071795862
+      name "maze block(11)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 0 0 -1.5878811405852621e-07
+      translation 1.81 -0.9 -2.73432346974134e-06
+      rotation 0 0 1 3.14159
+      name "maze block(12)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 -7.203582161768518e-05 2.9714213386073284e-05 -1.5878801158652166e-07
+      hidden angularVelocity_0 -2.4730700193012213e-15 5.996809474766251e-14 -1.356237758227953e-05
+      translation 1.3601117370908806 -1.369452838964858 -2.7343233195281647e-06
+      rotation 1.7826022401789507e-14 4.5586286684392975e-14 1 1.570555415202676
+      name "maze block(13)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 8.765545371107246e-05 -9.326733914380546e-05 -1.5878822389912306e-07
+      hidden angularVelocity_0 -1.0324529239438628e-12 -1.1143156804225994e-12 1.5438422510215054e-05
+      translation 0.4802604599166347 -1.3704262190334764 -2.7343235581220315e-06
+      rotation 1.4706717843254575e-13 9.492168450418675e-14 1 1.5705005073828073
+      name "maze block(14)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 -1.5619632085613302e-05 6.355312575902768e-05 -1.587881067304209e-07
+      hidden angularVelocity_0 4.368760080606773e-14 1.1402751283167853e-12 2.8537772435535004e-05
+      translation -0.41037219700752064 -1.3701209420016658 -2.734323531615457e-06
+      rotation -6.021871793171174e-14 -5.786241449639733e-14 1 1.5707408540781276
+      name "maze block(15)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 3.4680941349180124e-05 -1.7274004759354495e-05 -1.7664855558186162e-07
+      hidden angularVelocity_0 4.556281893539268e-10 -4.361506697972418e-09 1.639199225674151e-05
+      translation -1.1200996036654276 -0.9304649144844094 -2.7333120061409644e-06
+      rotation 2.9316270375369235e-10 -2.910596441093947e-10 -1 1.5705442339012212
+      name "maze block(5)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 -0.00013701378271626543 0.0003011955475118585 -2.0243711853521212e-07
+      hidden angularVelocity_0 -4.373143619501602e-08 -4.608244460029819e-10 -3.996182124881147e-05
+      translation -1.1204160000295813 -0.49934214227067314 -2.720253894077096e-06
+      rotation 1.903563812143407e-05 2.366384755723763e-07 0.9999999998187941 0.000304381154678369
+      name "maze block(6)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 8.794273868323538e-05 -0.00025625408245022165 -2.619802300667676e-07
+      hidden angularVelocity_0 -1.0966569528397079e-07 8.34110716388958e-10 -1.4457362777054596e-05
+      translation -1.1195753637430572 0.3701177432655253 -2.6576283965393244e-06
+      rotation 0.00015848876171629584 -4.5142644125390954e-08 0.9999999874406551 0.000294983403277853
+      name "maze block(7)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 -9.14651292930397e-05 3.843120733023127e-05 -2.996022753875825e-07
+      hidden angularVelocity_0 2.096802284571608e-09 2.1512673548128416e-07 1.173169992294356e-05
+      translation -0.6798654733226798 0.8208346997229882 -2.3766189595139653e-06
+      rotation 1.1688082702397535e-07 -1.2030836852860614e-07 -0.999999999999986 1.5706666941820069
+      name "maze block(8)"
+      length 0.9
+    }
+    MazeBlock {
+      hidden linearVelocity_0 -8.523002570817232e-05 -1.1240188553365858e-06 2.3126358309847726e-07
+      hidden angularVelocity_0 -2.5574618980930225e-09 6.074734206958718e-08 9.333621778923891e-06
+      translation -0.04984613258768178 0.820111447087937 -1.6617299517379669e-06
+      rotation 4.403553534518713e-08 -4.114167168739592e-08 -0.999999999999998 1.570656018656467
+      name "maze block(9)"
+      length 0.4
+    }
+    MazeBlock {
+      hidden linearVelocity_0 0.0001409008654852583 -0.0002192269899250021 2.3877549250637665e-07
+      hidden angularVelocity_0 -5.369117838560657e-08 1.979832807996847e-09 -1.7033919987131033e-05
+      translation 0.0003945367871836175 0.6296156524311347 -1.6666877029614113e-06
+      rotation 0.0006218738330636599 -2.5295831328581167e-05 0.9999998063165095 0.00013678711218388667
+      name "maze block(10)"
+      length 0.4
+    }
+  ]
+  name "solid(1)"
+}
